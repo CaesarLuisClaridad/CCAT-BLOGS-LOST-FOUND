@@ -24,7 +24,7 @@ const ChangePasswordPage = (e) => {
     try {
      
       const response = await fetch(
-        `http://localhost:5000/api/user/updatePassword/` + user.id,
+        `https://ccat-blogs-lost-found-backend.onrender.com/api/user/updatePassword/` + user.id,
         {
           method: "PATCH",
           headers: {

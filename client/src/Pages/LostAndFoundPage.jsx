@@ -5,7 +5,6 @@ import { useEffect } from "react";
 import LostDetails from "../components/LostDetails";
 import Spinner from "react-bootstrap/Spinner";
 import LostandFoundNav from "../components/LostandFoundNav";
-import { Link } from "react-router-dom";
 
 const LostAndFoundPage = () => {
   const { item, dispatch } = UseLostandFoundContext();
@@ -13,7 +12,7 @@ const LostAndFoundPage = () => {
 
   useEffect(() => {
     const fetchItems = async () => {
-      const response = await fetch(`http://localhost:5000/item/getAllItem`, {
+      const response = await fetch(`https://ccat-blogs-lost-found-backend.onrender.com/item/getAllItem`, {
         headers: {
           Authorization: `Bearer ${user.token}`,
         },

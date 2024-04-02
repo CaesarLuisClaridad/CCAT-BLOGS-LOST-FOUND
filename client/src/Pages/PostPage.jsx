@@ -4,7 +4,6 @@ import { UseBlogContext } from "../hooks/UseBlogContext";
 import { UseAuthContext } from "../hooks/UseAuthContext";
 import {toast} from 'react-hot-toast';
 import Spinner from 'react-bootstrap/Spinner';
-import AccountNav from "../components/AccountNav";
 
 const PostPage = () => {
   const {user} = UseAuthContext();
@@ -25,7 +24,7 @@ const PostPage = () => {
     setIsLoading(true);
 
     const blog = { title, body };
-    const response = await fetch(`http://localhost:5000/api`, {
+    const response = await fetch(`https://ccat-blogs-lost-found-backend.onrender.com/api`, {
       method: "POST",
       body: JSON.stringify(blog),
       headers: {

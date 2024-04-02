@@ -12,7 +12,7 @@ const LostAndFoundPage = () => {
   useEffect(() => {
     const fetchItems = async () => {
       const response = await fetch(
-        `http://localhost:5000/item/getUserPost/` + item.user_id,
+        `https://ccat-blogs-lost-found-backend.onrender.com/item/getUserPost/` + item.user_id,
         {
           headers: {
             Authorization: `Bearer ${user.token}`,

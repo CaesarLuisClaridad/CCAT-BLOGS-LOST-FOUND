@@ -9,7 +9,7 @@ const Notification = () => {
     try {
       const user = JSON.parse(localStorage.getItem("user"));
       const response = await fetch(
-        `http://localhost:5000/notif/notifications`,
+        `https://ccat-blogs-lost-found-backend.onrender.com/notif/notifications`,
         {
           method: "GET",
           headers: {

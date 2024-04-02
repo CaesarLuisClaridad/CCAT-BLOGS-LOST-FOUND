@@ -72,7 +72,7 @@ const ItemPostPage = () => {
     formData.append("phonenumber", phonenumber);
 
     //connecting to backend
-    const response = await fetch(`http://localhost:5000/item/postItem`, {
+    const response = await fetch(`https://ccat-blogs-lost-found-backend.onrender.com/item/postItem`, {
       method: "POST",
       body: formData,
       headers: {
