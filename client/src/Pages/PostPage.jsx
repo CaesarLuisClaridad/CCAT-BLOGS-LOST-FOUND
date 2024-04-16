@@ -24,7 +24,7 @@ const PostPage = () => {
     setIsLoading(true);
 
     const blog = { title, body };
-    const response = await fetch(`https://ccat-blogs-lost-found-backend.onrender.com/api`, {
+    const response = await fetch(`http://localhost:5000/api`, {
       method: "POST",
       body: JSON.stringify(blog),
       headers: {
@@ -56,7 +56,7 @@ const PostPage = () => {
   return (
     <>
       <div className="form-container">
-        <div className="form-content mx-3">
+        <div className="form-content mx-3" data-aos="fade-up">
           <div className="form-text p-4">
           <form action="/" onSubmit={handleSubmit}>
             <h3 className="text-light">Anong kwento mo?</h3>

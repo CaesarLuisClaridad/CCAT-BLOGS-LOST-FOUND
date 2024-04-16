@@ -14,7 +14,7 @@ const BlogPostPage = () => {
 
   useEffect(() => {
     const fetchUserBlogs = async () => {
-      const response = await fetch(`https://ccat-blogs-lost-found-backend.onrender.com/api/user`, {
+      const response = await fetch(`http://localhost:5000/api/user`, {
         headers: {
           Authorization: `Bearer ${user.token}`,
         },

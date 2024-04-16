@@ -10,7 +10,7 @@ const HomePage = () => {
 
   useEffect(() => {
     const fetchBlogs = async () => {
-      const response = await fetch(`https://ccat-blogs-lost-found-backend.onrender.com/api/all`, {
+      const response = await fetch(`http://localhost:5000/api/all`, {
         headers: {
           Authorization: `Bearer ${user.token}`,
         },
@@ -34,7 +34,7 @@ const HomePage = () => {
     <>
      
       {user && (
-        <div className="overflow-hidden blog-container py-4">
+        <div className="d-flex justify-content-center flex-column m-auto overflow-hidden py-4 ">
           {blogs && blogs.length > 0 ? (
             blogs.map((blog) => <BlogDetails key={blog._id} blog={blog} />)
           ) : (

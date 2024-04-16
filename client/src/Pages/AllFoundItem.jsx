@@ -13,7 +13,7 @@ const AllFoundItem = () => {
 
   useEffect(() => {
     const fetchItems = async () => {
-      const response = await fetch(`https://ccat-blogs-lost-found-backend.onrender.com/item/getAllItem`, {
+      const response = await fetch(`http://localhost:5000/item/getAllItem`, {
         headers: {
           Authorization: `Bearer ${user.token}`,
         },
@@ -37,7 +37,7 @@ const AllFoundItem = () => {
 
   return (
     <>
-     <div className="d-block d-lg-none border-bottom">
+     <div className="d-block d-xl-none border-bottom">
       <LostandFoundNav />
     </div>
       {user && (

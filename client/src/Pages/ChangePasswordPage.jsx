@@ -7,7 +7,7 @@ import AccountNav from "../components/AccountNav";
 
 const ChangePasswordPage = (e) => {
   const { user } = UseAuthContext();
-  const [currentPassword, setCurrentPassword] = useState(user.password);
+  const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmNewPassword, setConfirmNewPassword] = useState("");
   const [type, setType] = useState("password");
@@ -16,15 +16,17 @@ const ChangePasswordPage = (e) => {
   const handleChangePassword = async (e) => {
     e.preventDefault();
 
+    setCurrentPassword("")
+    setNewPassword("")
+    setConfirmNewPassword("")   
     //check if the new password is match before sending the request
     if (newPassword !== confirmNewPassword) {
       toast.error("New password do not match");
       return;
     }
     try {
-     
       const response = await fetch(
-        `https://ccat-blogs-lost-found-backend.onrender.com/api/user/updatePassword/` + user.id,
+        `http://localhost:5000/api/user/updatePassword/` + user.id,
         {
           method: "PATCH",
           headers: {
@@ -39,13 +41,13 @@ const ChangePasswordPage = (e) => {
       );
 
       if (!response.ok) {
-        const errorData = await response.json(); // Parse the JSON to access the error message
+        const errorData = await response.json();
         toast.error(errorData.mssg);
-        return; // Stop further execution
+        return;
+      } else{
+        toast.success("Password updated successfully");  
       }
-
-      const data = await response.json();
-      toast.success("Password updated successfully");
+      
     } catch (error) {
       toast.error("An unexpected error occurred."); // Fallback error message
     }
@@ -60,8 +62,7 @@ const ChangePasswordPage = (e) => {
         <AccountNav />
       </div>
       <div className="container d-flex align-items-center justify-content-center ">
-        <div className="change-password-container mt-5 rounded-3 overflow-hidden">
-
+        <div className="change-password-container mt-5 rounded-3 overflow-hidden" data-aos="fade-up"> 
           <div className="py-3 py-lg-4 px-4 px-lg-5">
             <div className="fs-3 text-center fw-bold mb-3">
               <span>Change Password</span>
@@ -74,6 +75,7 @@ const ChangePasswordPage = (e) => {
                   <Form.Control
                     required
                     type={type}
+                    value={currentPassword}           
                     onChange={(e) => setCurrentPassword(e.target.value)}
                   />
                   <span className="input-icon" onClick={handleViewPassword}>
@@ -91,7 +93,8 @@ const ChangePasswordPage = (e) => {
                 <div className="input-wrapper">
                   <Form.Control
                     required
-                    type={type}
+                    type={type}    
+                    value={newPassword}     
                     onChange={(e) => setNewPassword(e.target.value)}
                   />
                   <span className="input-icon" onClick={handleViewPassword}>
@@ -110,6 +113,7 @@ const ChangePasswordPage = (e) => {
                   <Form.Control
                     required
                     type={type}
+                    value={confirmNewPassword}
                     onChange={(e) => setConfirmNewPassword(e.target.value)}
                   />
                   <span onClick={handleViewPassword} className="input-icon">

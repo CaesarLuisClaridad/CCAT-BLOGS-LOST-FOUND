@@ -10,9 +10,11 @@ export const LostandFoundReducer = (state, action) => {
       };
 
     case "CREATE_ITEM":
-      return {
-        item: [action.payload, ...state.item],
-      };
+      if(!Array.isArray(state.items)){
+        console.error("Invalid")
+        return {item: [action.payload, ...state.item]};
+      }
+     
     case "DELETE_ITEM":
       return {
         item: state.item.filter((i) => i._id !== action.payload._id),

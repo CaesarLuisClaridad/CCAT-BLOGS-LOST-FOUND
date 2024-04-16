@@ -16,7 +16,7 @@ const AllItemPost = () => {
             {user && (
                 <div className="container">
                 <div className="row flex-column flex-lg-row">
-                    <div className="col-12 col-md-3 col-lg-2 border overflow-hidden py-1 p-0 d-none d-lg-block ">
+                    <div className="col-12 col-md-3 col-lg-2 border overflow-hidden py-1 p-0 d-none d-xl-block ">
                        <LostandFoundNav selectedItemLink={selectedItemLink} setSelectedItemLink={setSelectedItemLink}/>
                     </div>
                     <div className="col border p-0 vh-100">

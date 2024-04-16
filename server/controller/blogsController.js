@@ -111,12 +111,11 @@ const updateLikes = async (req, res) => {
     await blog.save();
 
     if (like > 0) {
-      // Assuming like > 0 means a user likes the blog
       const liker = await User.findById(req.user._id); // Fetching the liker's user document
       if (!liker) {
         return res.status(404).json({ error: "Liker not found" });
     }
-    
+    //if the blog is liked it will create a new notification   
     await Notification.create({
       toUser: blog.user_id, // The owner of the blog
       fromUser: req.user._id, // The liker

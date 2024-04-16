@@ -5,7 +5,7 @@ export const UseLostandFoundContext = () => {
     const context = useContext(LostandFoundContext);
 
     if(!context){
-        throw Error('UseLostandFoundContext must use a inside a BlogContextProvider')
+        throw Error('UseLostandFoundContext must use a inside a UseLostandFoundContext')
     }
 
     return context

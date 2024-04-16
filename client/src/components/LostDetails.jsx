@@ -2,10 +2,35 @@ import React from "react";
 import { UseAuthContext } from "../hooks/UseAuthContext";
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
 import Spinner from 'react-bootstrap/Spinner';
-import AccountNav from "./AccountNav";
+import Dropdown from "react-bootstrap/Dropdown";
+import { UseLostandFoundContext } from "../hooks/UseLostandFoundContext";
+
 
 const LostDetails = ({ item }) => {
   const { user } = UseAuthContext();
+  const { dispatch } = UseLostandFoundContext();
+
+
+  const handleDelete = async () => {
+
+    if(!user){
+      return
+    }
+    const response = await fetch('http://localhost:5000/item/deleteUserPost/' + item._id, {
+      method: "DELETE",
+      headers: {
+          Authorization: `Bearer ${user.token}`
+      },
+    }) 
+    
+    const json = await response.json();
+
+    if(response.ok){
+      dispatch({type: "DELETE_ITEM", payload: json});
+      console.log("item deleted successfully!")
+    }
+
+  }
 
   return (
     <>
@@ -15,38 +40,66 @@ const LostDetails = ({ item }) => {
         data-aos-duration="700"
       >
         <div className="lost-found-info border rounded shadow-lg">
-          <div className="d-flex align-items-center border-bottom px-3 py-3">
-            <div className="">
-              {item.user_id && (
-                <img
-                  src={item.user_id.profilePicture}
-                  alt="user profile"
-                  className="profile me-2"
-                />
-              )}
+          <div className="d-flex align-items-center justify-content-between border-bottom px-3 py-3">
+            <div className="d-flex">
+              <div>
+                {item.user_id && (
+                  <img
+                    src={item.user_id.profilePicture}
+                    alt="user profile"
+                    className="profile me-2"
+                  />
+                )}
+              </div>
+              <div>
+                {item.user_id && (
+                  <>
+                    <h6 className="text-light m-0">{item.user_id?.username}</h6>
+                  </>
+                )}
+                <span className="posted text-light m-0">Posted: </span>
+                {item.createdAt && item.createdAt !== null ?(
+                    <span className="posted text-light m-0">
+                    {formatDistanceToNow(new Date(item.createdAt), {
+                      addSuffix: true,
+                    })}
+                  </span>
+                ) : (
+                  <div className="d-flex align-items-center justify-content-center">
+                <Spinner animation="border" variant="success" />
+              </div>
+                )}     
+              </div>
             </div>
-            <div>
-              {item.user_id && (
-                <>
-                  <h6 className="text-light m-0">{item.user_id.username}</h6>
-                </>
-              )}
-              <span className="posted text-light m-0">Posted: </span>
-              {item.createdAt && item.createdAt !== null ?(
-                  <span className="posted text-light m-0">
-                  {formatDistanceToNow(new Date(item.createdAt), {
-                    addSuffix: true,
-                  })}
-                </span>
-              ) : (
-                <div className="d-flex align-items-center justify-content-center">
-              <Spinner animation="border" variant="success" />
-            </div>
-              )}
-              
-            </div>
-          </div>
 
+              <div>
+                  {user && user.username === item.user_id?.username ? (
+                      <Dropdown>
+                      <Dropdown.Toggle
+                        variant=""
+                        id="dropdown-custom-components"
+                        bsPrefix="p-0"
+                        className="outline-0 border-0"
+                      >
+                      
+                        <i
+                          className="bx bx-dots-horizontal-rounded outline-0 text-light"
+                          style={{ cursor: "pointer", fontSize: "24px" }}
+                        ></i>
+                      
+                      </Dropdown.Toggle>
+        
+                      <Dropdown.Menu>
+                        <Dropdown.Item href="#/action-2" onClick={handleDelete}>
+                          <i class="bi bi-trash3-fill me-2" />
+                          Delete Item
+                        </Dropdown.Item>
+                      </Dropdown.Menu>
+                    </Dropdown>
+                    ) : null}
+                </div>
+            </div>
+              
           <div className="d-flex align-items-center flex-column flex-md-row px-2 py-2 py-md-3 ">
             <div className="d-flex justify-content-center justify-content-lg-start d-block d-sm-none my-1 m-md-0">
               <h2 className="fw-bold text-light  m-0 py-1">{item.what}</h2>

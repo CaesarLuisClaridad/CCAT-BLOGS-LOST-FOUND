@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { UseAuthContext } from "../hooks/UseAuthContext";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import Spinner from "react-bootstrap/Spinner";
 import "../index.css";
 
 const ForgotPasswordPage = () => {
@@ -16,7 +15,7 @@ const ForgotPasswordPage = () => {
         e.preventDefault();
         
         try{
-            const response = await fetch(`https://ccat-blogs-lost-found-backend.onrender.com/api/user/findUser`, {
+            const response = await fetch(`http://localhost:5000/api/user/findUser`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -34,15 +33,13 @@ const ForgotPasswordPage = () => {
                 const data = await response.json();
                 console.log("Hello", data);
                 navigate("/createNewPassword", { state: { userId: data.userId } });
-               toast.success("User found!")        
+                toast.success("User found!")        
             
         }
         catch(error){
             console.log(error);
         }
     }
-    
-
 
   return (
     <>

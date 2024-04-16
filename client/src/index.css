@@ -5,7 +5,38 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
 }
+
+/*-nav bar icons-*/
+.navbar-brand:hover{
+    background: #b7c4d0;
+    color: #fff;
+    border-radius: 3px;
+    transition: 0.3s;
+}
+
+
+/*-for nav link-*/
+.active {
+    background-color: #1e6923 !important; 
+    color: #fffbfb !important;
+    outline: none !important;
+    border: none !important;
+    transform: 0.3s !important;
+}
+
+.active .account-icon{
+    color: #fffbfb !important;
+}
+
+
+.hover-active:hover{
+    background-color: #358e3e;
+    transition: 0.3s;
+    color: #fffbfb !important;
+}
+  
 
 /*--Notification--*/
 
@@ -14,6 +45,11 @@
     border-radius: 50%;
     color: #000000;
     padding: 5px;
+}
+
+.notification:hover{
+    background: #9b8f8f;
+    transition: 0.3s
 }
 
 .notification-count{
@@ -63,6 +99,22 @@ a.dropdown-item{
     color: red;
 }
 
+/*-Sidebar-*/
+/* Add this class in your CSS file */
+
+.fixed-sidebar {
+    position: fixed; /* This will fix the sidebar's position relative to the viewport */
+    top: 0; /* Align to the top of the viewport */
+    left: 0; /* Align to the left of the viewport */
+    height: 100%; /* Set to full viewport height */
+    width: 16.50%;
+    overflow-y: auto; /* Allows scrolling within the sidebar if content overflows */
+  }
+  
+  
+
+
+
 /* Hide text in the sidebar */
 
 
@@ -88,6 +140,10 @@ a.dropdown-item{
 
 
 /*--About-container--*/
+
+.about-header{
+    font-size: clamp(1.7rem, 1.3333rem + 1.9556vw, 2.8rem);
+}
 
 .about-container{
     width: 100%;

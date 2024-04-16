@@ -26,7 +26,7 @@ const BlogDetails = ({ blog }) => {
 
   const handleSaveChanges = async () => {
     const updatedBlog = { title: editTitle, body: editBody };
-    const response = await fetch(`https://ccat-blogs-lost-found-backend.onrender.com/api/` + blog._id, {
+    const response = await fetch(`http://localhost:5000/api/` + blog._id, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -52,7 +52,7 @@ const BlogDetails = ({ blog }) => {
     if (!user) {
       return;
     }
-    const response = await fetch(`https://ccat-blogs-lost-found-backend.onrender.com/api/` + blog._id, {
+    const response = await fetch(`http://localhost:5000/api/` + blog._id, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${user.token}`,
@@ -71,7 +71,7 @@ const BlogDetails = ({ blog }) => {
   const handleLike = async () => {
     try {
       const response = await fetch(
-        `https://ccat-blogs-lost-found-backend.onrender.com/api/like/` + blog._id,
+        `http://localhost:5000/api/like/` + blog._id,
         {
           method: "POST",
           headers: {
@@ -118,7 +118,7 @@ const BlogDetails = ({ blog }) => {
 
   return (
     <>
-      <div className="blog rounded-1 mx-3 mx-lg-auto shadow-lg" data-aos="fade-up">
+      <div className="blog rounded-1 mx-3 mx-md-auto mx-lg-auto shadow-lg" data-aos="fade-up">
         <div className="d-flex align-items-center justify-content-between py-3  px-3 w-100 border-bottom bg-success">
           <div>
             <div className="d-flex">

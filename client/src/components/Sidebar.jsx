@@ -1,49 +1,50 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../assets/logo.png";
 
 const Sidebar = () => {
+
   return (
     <>
-      <div className="vh-100 overflow-hidden top-0 overflow-y-auto position-fixed" >
+      <div className="vh-100  overflow-hidden top-0 overflow-y-auto fixed-sidebar  " >
         <div className="d-flex align-items-center p-2">
           <div>
              <img src={logo} className="logo me-2" alt="Logo" />
           </div>
           <div>
-             <span className="fs-5 fw-bold">CCAT-BLOGS</span>
+             <span className="fs-6 fw-bold">CCAT-BLOGS</span>
           </div> 
         </div>
         <div className="list-group list-group-flush overflow-hidden">
-          <Link to="/" className="list-group-item py-3">
+          <NavLink to="/" className="list-group-item py-3 hover-active" activeClassName="active">
             <i class="bi bi-house-fill me-4"></i>
             <span>Blogs</span>
-          </Link>
+          </NavLink>
 
-          <Link to="/blog" className="list-group-item py-3">
+          <NavLink to="/blog" className="list-group-item py-3 hover-active" activeClassName="active">
             <i class="bi bi-info-square-fill me-4"></i>
             <span>About</span>
-          </Link>
+          </NavLink>
 
-          <Link to="/post" className="list-group-item py-3">
+          <NavLink to="/post" className="list-group-item py-3 hover-active" activeClassName="active">
             <i class="bi bi-postcard-fill me-4"></i>
             <span>Post Blog</span>
-          </Link>
+          </NavLink>
 
-          <Link to="/postItem" className="list-group-item py-3">
+          <NavLink to="/postItem" className="list-group-item py-3 hover-active" activeClassName="active">
             <i class="bi bi-pencil-square me-4"></i>
             <span>Post Item</span>
-          </Link>
+          </NavLink>
 
-          <Link to="/allItemPost" className="list-group-item py-3">
+          <NavLink to="/allItemPost" className="list-group-item py-3 hover-active" activeClassName="active">
             <i class="bi bi-search me-4"></i>
             <span>Lost and Found</span>
-          </Link>
+          </NavLink>
 
-          <Link to="/account" className="list-group-item py-3">
+          <NavLink to="/account" className="list-group-item py-3 hover-active" activeClassName="active">
             <i class="bi bi-person-fill me-4"></i>
             <span>Account</span>
-          </Link>
+          </NavLink>
 
         </div>
       </div>

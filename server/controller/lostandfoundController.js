@@ -81,8 +81,21 @@ const getAllUserPost = async (req, res) => {
     }
 }
 
+const deleteItem = async (req, res) => {
+    const {id} = req.params;
+
+    const item = await Item.findOneAndDelete({_id: id});
+
+    if(!item){
+        return res.status(404).json({mssg: "Error deleting"})
+    }
+
+    return res.status(200).json(item)
+}
+
 module.exports = {
     postItem,
     getAllUserPost,
-    getAllItem
+    getAllItem,
+    deleteItem
 }

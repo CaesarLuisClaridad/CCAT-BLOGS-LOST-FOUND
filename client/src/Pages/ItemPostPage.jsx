@@ -72,7 +72,7 @@ const ItemPostPage = () => {
     formData.append("phonenumber", phonenumber);
 
     //connecting to backend
-    const response = await fetch(`https://ccat-blogs-lost-found-backend.onrender.com/item/postItem`, {
+    const response = await fetch(`http://localhost:5000/item/postItem`, {
       method: "POST",
       body: formData,
       headers: {
@@ -106,7 +106,7 @@ const ItemPostPage = () => {
       <div className="container d-flex justify-content-center align-items-center full-height-center w-100">
         <form
           onSubmit={handleSubmit}
-          className="formwidth border p-3 px-md-4 px-md-3 shadow rounded-2 overflow-hidden"
+          className="formwidth border p-3 px-md-4 px-md-3 shadow rounded-2 overflow-hidden" data-aos="fade-up"
         >
           <div className="row ">
             <div className="col-12 col-md-6 d-flex flex-column align-items-center overflow-hidden">
@@ -190,7 +190,7 @@ const ItemPostPage = () => {
                     <input
                       type="text"
                       className="bg-transparent border-0 outline-0 no-border-focus w-100 p-2"
-                      placeholder="(+1234567890)(no-space)"
+                      placeholder="(09876543210)(no-space)"
                       onChange={(e) => setPhoneNumber(e.target.value)}
                       value={phonenumber}
                     />

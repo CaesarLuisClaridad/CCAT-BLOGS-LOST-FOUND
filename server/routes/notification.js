@@ -1,6 +1,6 @@
 const express = require('express');
 
-const {getNotifications,  markNotificationsRead} = require("../controller/notificationController") 
+const {getNotifications, markNotificationsRead} = require("../controller/notificationController") 
 
 const requireAuth = require('../middleware/requireAuth')
 

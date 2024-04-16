@@ -60,7 +60,7 @@ const SignupPage = () => {
                 type="email"
                 onChange={(e) => setEmail(e.target.value)}
                 value={email}
-                placeholder="example@ccat.com"
+                placeholder="ex: name@ccat.com"
                 pattern=".*@ccat\.com$"
                 title="Email must end with @ccat.com"
                 className="mt-1 mb-1 w-100 outline-0 border-0 shadow rounded p-2 p-md-3"

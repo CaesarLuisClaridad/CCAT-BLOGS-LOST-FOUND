@@ -4,12 +4,11 @@ import { UseNotificationContext } from "../hooks/UseNotification";
 const Notification = () => {
   const { notifications, dispatch } = UseNotificationContext();
 
-  // Convert to function declaration, which is hoisted
   const fetchNotifications = async () => {
     try {
       const user = JSON.parse(localStorage.getItem("user"));
       const response = await fetch(
-        `https://ccat-blogs-lost-found-backend.onrender.com/notif/notifications`,
+        `http://localhost:5000/notif/notifications`,
         {
           method: "GET",
           headers: {

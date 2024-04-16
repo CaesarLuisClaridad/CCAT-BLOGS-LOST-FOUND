@@ -1,8 +1,6 @@
 const User = require("../models/userModel");
 const jwt = require("jsonwebtoken");
-const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
-const validator = require("validator");
 
 //creating a token for the user
 const createToken = (_id) => {
@@ -110,7 +108,7 @@ const updatePassword = async (req, res) => {
 
   //check if the current and new password is filled up
   if (!currentPassword || !newPassword) {
-    res.status(400).json({ mssg: "Provide both current and new password" });
+    return res.status(400).json({ mssg: "Provide both current and new password" });
   }
 
   try {
@@ -147,6 +145,8 @@ const updatePassword = async (req, res) => {
   }
 };
 
+
+//finding user in forgot password
 const findUser = async (req, res) => {
   const { email, username } = req.body;
 
@@ -169,13 +169,13 @@ const findUser = async (req, res) => {
         });
     }
 
-    console.log(email, username);
   } catch (error) {
     console.error(error);
     res.status(500).json({ mssg: "An error occurred while finding the user" });
   }
 };
 
+//creating new password after the user has been found in the database
 const initiatePasswordReset = async (req, res) => {
     const {newPassword, confirmNewPassword } = req.body;
     const {id} = req.params;

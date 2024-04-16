@@ -38,7 +38,7 @@ function App() {
     <>
       <div className="container-fluid min-vh-100">
         <BrowserRouter>
-          <div className="row p-0 ">
+          <div className="row p-0">
             {toggle && user && (
               <div className="col-2 p-0 overflow-hidden border d-none d-xl-block">
                 <Sidebar Toggle={Toggle} />

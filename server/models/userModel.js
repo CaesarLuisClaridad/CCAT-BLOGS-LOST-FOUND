@@ -58,7 +58,7 @@ userSchema.statics.signup = async function (
   }
 
   if (!validator.isStrongPassword(password)) {
-    throw Error("Password needs 8 chars, uppercase, lowercase, numbers, symbols.");
+    throw Error("Password needs 8+ chars, including uppercase, lowercase, digits, symbols.");
   }
 
   if (password !== confirmPassword) {
@@ -75,7 +75,7 @@ userSchema.statics.signup = async function (
   const UsernameExists = await this.findOne({ username });
 
   if(UsernameExists) {
-    throw Error("Username already exists!");
+    throw Error("Username must be unique!");
   }
 
   //profilePic

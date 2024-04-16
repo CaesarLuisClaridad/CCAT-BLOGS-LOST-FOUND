@@ -3,7 +3,7 @@ const multer = require('multer');
 const upload = multer();
 
 const {
-    postItem, getAllItem, getAllUserPost
+    postItem, getAllItem, getAllUserPost, deleteItem
 } = require('../controller/lostandfoundController')
 
 const requireAuth = require('../middleware/requireAuth')
@@ -21,6 +21,8 @@ router.get('/getAllItem', getAllItem);
 
 //get all specific user post
 router.get('/getUserPost/:id', getAllUserPost);
+
+router.delete('/deleteUserPost/:id', deleteItem);
 
 
 module.exports = router;

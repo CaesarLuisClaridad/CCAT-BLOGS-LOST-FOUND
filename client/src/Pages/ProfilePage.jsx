@@ -22,7 +22,7 @@ const ProfilePage = () => {
   const handleSaveChanges = async () => {
     const updatedInformation = {username: editUsername, email: editEmail};
     console.log(user.id);
-    const response = await fetch(`https://ccat-blogs-lost-found-backend.onrender.com/api/user/editinfo/` + user.id, {
+    const response = await fetch(`http://localhost:5000/api/user/editinfo/` + user.id, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -48,7 +48,7 @@ const ProfilePage = () => {
     <div className="d-block d-lg-none border-bottom">
       <AccountNav/>
     </div>
-      <div className="container p-3 p-md-5">
+      <div className=" p-4 p-md-5" data-aos="fade-up">
         <div className=" text-center fs-2 fw-bold mb-3">
           <span className="account-title ">My profile</span>
         </div>

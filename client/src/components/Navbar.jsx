@@ -4,18 +4,14 @@ import { useState, useEffect } from "react";
 import { UseLogout } from "../hooks/UseLogout";
 import { Link } from "react-router-dom";
 import { UseAuthContext } from "../hooks/UseAuthContext";
-import { UseBlogContext } from "../hooks/UseBlogContext";
-import { Toaster } from "react-hot-toast";
 import Dropdown from "react-bootstrap/Dropdown";
 import Button from "react-bootstrap/Button";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Notification from "./Notification";
-// import Notification from "./Notification";
 
 const Navbar = ({ Toggle }) => {
   const { logout } = UseLogout();
   const { user } = UseAuthContext();
-  const { blogs } = UseBlogContext();
   const [show, setShow] = useState(false);
   const [notifications, setNotifications] = useState([]);
   const [notificationCount, setNotificationCount] = useState(0);
@@ -32,7 +28,7 @@ const Navbar = ({ Toggle }) => {
     const fetchNotification = async () => {
       try {
         const response = await fetch(
-          `https://ccat-blogs-lost-found-backend.onrender.com/notif/notifications`,
+          `http://localhost:5000/notif/notifications`,
           {
             method: "GET",
             headers: {
@@ -55,20 +51,19 @@ const Navbar = ({ Toggle }) => {
   const handleToggleNotifications = () => {
     setIsNotificationsOpen((prev) => !prev);
     if (!isNotificationsOpen) {
-      // This means we're about to open the notifications, so let's reset the count
+      // This will open the notifications, so it will reset the count
       resetNotificationCount();
     }
   };
 
   const resetNotificationCount = async () => {
-    // Example of marking notifications as read
+    // will mark the notification as read
     try {
-      await fetch(`https://ccat-blogs-lost-found-backend.onrender.com/notif/notificationCount`, {
-        method: "PATCH", // or 'PATCH', depending on your API
+      await fetch(`http://localhost:5000/notif/notificationCount`, {
+        method: "PATCH",
         headers: {
           Authorization: `Bearer ${user.token}`,
           "Content-Type": "application/json",
-          // Include auth headers as needed
         },
       });
       setNotificationCount(0);
@@ -82,12 +77,12 @@ const Navbar = ({ Toggle }) => {
         <div className="container-fluid d-flex justify-content-between">
           <div>
             {user && (
-              <div className="py-2">
-                <div className="d-xl-none">
-                  <img src={logo} className="logo" alt="Logo" />
-                </div>
+              <div className="py-2 px-1">
+                <Link to="/" className="d-xl-none cursor-pointer">
+                    <img src={logo} className="logo" alt="Logo" />
+                </Link>
                 <i
-                  className="navbar-brand bi bi-justify-left text-success d-none  d-xl-block"
+                  className="navbar-brand bi bi-justify-left text-success p-1 d-none d-xl-block"
                   onClick={Toggle}
                 ></i>
                 <button
@@ -104,6 +99,7 @@ const Navbar = ({ Toggle }) => {
           </div>
 
           <div>
+            {/*notification*/}
             <div className="d-flex align-items-center mx-2">
               {user && (
                 <Dropdown
