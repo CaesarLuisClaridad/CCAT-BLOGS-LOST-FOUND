@@ -6,6 +6,7 @@ const blogRoutes = require("./routes/blogs");
 const userRoutes = require("./routes/user");
 const lostandFoundRoutes = require("./routes/lostandfound");
 const notificationsRoutes = require("./routes/notification");
+const path = require("path");
 
 const mongoose = require("mongoose");
 const cors = require("cors");
