@@ -34,7 +34,7 @@ const HomePage = () => {
     <>
      
       {user && (
-        <div className="d-flex justify-content-center flex-column m-auto overflow-hidden py-4 ">
+        <div className="d-flex justify-content-center flex-column overflow-hidden py-4 ">
           {blogs && blogs.length > 0 ? (
             blogs.map((blog) => <BlogDetails key={blog._id} blog={blog} />)
           ) : (

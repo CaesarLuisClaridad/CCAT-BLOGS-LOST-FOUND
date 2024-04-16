@@ -186,9 +186,9 @@ a.dropdown-item{
 
 /*-title tag-*/
 .title{
-    /* position: absolute;
+    position: absolute;
     top: 6px;
-    left: 10px; */
+    left: 10px;
     font-size: 0.7rem;
     font-style: italic;
 }
@@ -219,9 +219,9 @@ a.dropdown-item{
 
 /*-body tag-*/
 .body{
-    /* position: absolute;
+    position: absolute;
     top: 5px;
-    left: 10px; */
+    left: 10px;
     font-size: 0.7rem;
     font-style: italic;
     color: green;
