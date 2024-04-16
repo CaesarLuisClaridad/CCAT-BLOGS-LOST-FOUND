@@ -41,13 +41,21 @@ const BlogPostPage = () => {
       <div className="d-block d-lg-none border-bottom">
         <AccountNav />
       </div>
+<<<<<<< HEAD
       <div className="d-flex justify-content-center flex-column m-auto overflow-hidden">
+=======
+      <div className="d-flex justify-content-center  flex-column overflow-hidden">
+>>>>>>> 77b8e8ba1bbb98b759dd7fa1a1bf9953208203b5
         {user ? (
           <div className="d-flex justify-content-center flex-column py-4">
             {blogs && blogs.length > 0 ? (
               blogs.map((blog) => <BlogDetails key={blog._id} blog={blog} />)
             ) : (
+<<<<<<< HEAD
               <div className="d-flex justify-content-center fw-bold fs-4 mt-2">No Blog post</div>
+=======
+              <div className="d-flex justify-content-center  fw-bold fs-4 mt-2">No Blog post</div>
+>>>>>>> 77b8e8ba1bbb98b759dd7fa1a1bf9953208203b5
             )}
           </div>
         ) : null}
