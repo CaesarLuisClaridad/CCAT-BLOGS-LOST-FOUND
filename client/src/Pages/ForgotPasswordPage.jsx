@@ -15,7 +15,7 @@ const ForgotPasswordPage = () => {
         e.preventDefault();
         
         try{
-            const response = await fetch(`http://localhost:5000/api/user/findUser`, {
+            const response = await fetch(`https://ccat-blogs-lost-found-backend.onrender.com/api/user/findUser`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

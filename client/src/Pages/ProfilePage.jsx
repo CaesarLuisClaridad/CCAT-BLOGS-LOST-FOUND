@@ -22,7 +22,7 @@ const ProfilePage = () => {
   const handleSaveChanges = async () => {
     const updatedInformation = {username: editUsername, email: editEmail};
     console.log(user.id);
-    const response = await fetch(`http://localhost:5000/api/user/editinfo/` + user.id, {
+    const response = await fetch(`https://ccat-blogs-lost-found-backend.onrender.com/api/user/editinfo/` + user.id, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

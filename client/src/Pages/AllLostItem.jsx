@@ -13,7 +13,7 @@ const AllLostItem = () => {
 
   useEffect(() => {
     const fetchItems = async () => {
-      const response = await fetch(`http://localhost:5000/item/getAllItem`, {
+      const response = await fetch(`https://ccat-blogs-lost-found-backend.onrender.com/item/getAllItem`, {
         headers: {
           Authorization: `Bearer ${user.token}`,
         },

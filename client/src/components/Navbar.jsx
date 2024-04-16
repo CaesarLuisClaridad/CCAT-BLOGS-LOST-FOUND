@@ -28,7 +28,7 @@ const Navbar = ({ Toggle }) => {
     const fetchNotification = async () => {
       try {
         const response = await fetch(
-          `http://localhost:5000/notif/notifications`,
+          `https://ccat-blogs-lost-found-backend.onrender.com/notif/notifications`,
           {
             method: "GET",
             headers: {
@@ -59,7 +59,7 @@ const Navbar = ({ Toggle }) => {
   const resetNotificationCount = async () => {
     // will mark the notification as read
     try {
-      await fetch(`http://localhost:5000/notif/notificationCount`, {
+      await fetch(`https://ccat-blogs-lost-found-backend.onrender.com/notif/notificationCount`, {
         method: "PATCH",
         headers: {
           Authorization: `Bearer ${user.token}`,

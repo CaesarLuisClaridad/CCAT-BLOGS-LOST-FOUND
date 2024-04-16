@@ -26,7 +26,7 @@ const BlogDetails = ({ blog }) => {
 
   const handleSaveChanges = async () => {
     const updatedBlog = { title: editTitle, body: editBody };
-    const response = await fetch(`http://localhost:5000/api/` + blog._id, {
+    const response = await fetch(`https://ccat-blogs-lost-found-backend.onrender.com/api/` + blog._id, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -52,7 +52,7 @@ const BlogDetails = ({ blog }) => {
     if (!user) {
       return;
     }
-    const response = await fetch(`http://localhost:5000/api/` + blog._id, {
+    const response = await fetch(`https://ccat-blogs-lost-found-backend.onrender.com/api/` + blog._id, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${user.token}`,

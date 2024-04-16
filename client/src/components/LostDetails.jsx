@@ -16,7 +16,7 @@ const LostDetails = ({ item }) => {
     if(!user){
       return
     }
-    const response = await fetch('http://localhost:5000/item/deleteUserPost/' + item._id, {
+    const response = await fetch('https://ccat-blogs-lost-found-backend.onrender.com/item/deleteUserPost/' + item._id, {
       method: "DELETE",
       headers: {
           Authorization: `Bearer ${user.token}`
