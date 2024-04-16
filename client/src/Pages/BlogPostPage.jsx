@@ -41,7 +41,7 @@ const BlogPostPage = () => {
       <div className="d-block d-lg-none border-bottom">
         <AccountNav />
       </div>
-      <div className="d-flex justify-content-center align-items-center flex-column overflow-hidden" style={{ minHeight: "100vh" }}>
+      <div className="d-flex justify-content-center align-items-center flex-column overflow-hidden">
         {user ? (
           <div className="d-flex justify-content-center flex-column py-4">
             {blogs && blogs.length > 0 ? (
