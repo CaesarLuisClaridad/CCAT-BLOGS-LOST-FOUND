@@ -23,7 +23,7 @@ const BlogDetails = ({ blog }) => {
   const handleEditClose = () => {
     setEditMode(false);
   };
-
+ 
   const handleSaveChanges = async () => {
     const updatedBlog = { title: editTitle, body: editBody };
     const response = await fetch(`https://ccat-blogs-lost-found-backend.onrender.com/api/` + blog._id, {
@@ -118,7 +118,7 @@ const BlogDetails = ({ blog }) => {
 
   return (
     <>
-      <div className="blog rounded-1 mx-3 mx-md-auto mx-lg-auto shadow-lg" data-aos="fade-up">
+      <div className="blog rounded-1 mx-3 mx-lg-auto shadow-lg" data-aos="fade-up">
         <div className="d-flex align-items-center justify-content-between py-3  px-3 w-100 border-bottom bg-success">
           <div>
             <div className="d-flex">
