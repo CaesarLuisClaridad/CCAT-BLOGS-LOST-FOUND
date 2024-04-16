@@ -41,15 +41,19 @@ const BlogPostPage = () => {
       <div className="d-block d-lg-none border-bottom">
         <AccountNav />
       </div>
-      {user && (
-        <div className="container-fluid bg-light p-0 p-md-3 background home">
-          {blogs && blogs.length > 0 ? (
-            blogs.map((blog) => <BlogDetails key={blog._id} blog={blog} />)
-          ) : (
-            <div className="d-flex justify-content-center align-items-center fw-bold fs-4 mt-2">No Blog post</div>
-          )}
-        </div>
-      )}
+      <div className="d-flex justify-content-center align-items-center flex-column overflow-hidden">
+        {user ? (
+          <div className="d-flex justify-content-center flex-column py-4">
+            {blogs && blogs.length > 0 ? (
+              blogs.map((blog) => <BlogDetails key={blog._id} blog={blog} />)
+            ) : (
+              <div className="d-flex align-items-center justify-content-center">
+                <Spinner animation="border" variant="success" />
+              </div>
+            )}
+          </div>
+        ) : null}
+      </div>
     </>
   );
 };
