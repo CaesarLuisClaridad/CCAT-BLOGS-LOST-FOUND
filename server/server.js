@@ -34,8 +34,9 @@ app.use("/notif", notificationsRoutes);
 app.use(express.static(path.join(__dirname, "/client/dist")));
 
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "cliet", "dist", "index.html"))
-})
+  res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
+});
+
 
 
 //connect to database
