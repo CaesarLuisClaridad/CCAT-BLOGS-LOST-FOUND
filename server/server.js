@@ -32,8 +32,10 @@ app.use("/item", lostandFoundRoutes);
 app.use("/notif", notificationsRoutes);
 
 
+// Serve static files from the client/dist directory
 app.use(express.static(path.join(__dirname, "../client/dist")));
 
+// Serve the index.html file for all routes
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/dist", "index.html"));
 });
