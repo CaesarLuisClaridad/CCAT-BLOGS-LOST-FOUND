@@ -11,7 +11,6 @@ const notificationsRoutes = require("./routes/notification");
 
 const app = express();
 
-// Configure CORS and JSON parsing with larger body sizes
 app.use(cors({ origin: 'https://ccat-blogs-lost-found-frontend.onrender.com' }));
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
@@ -28,12 +27,12 @@ app.use("/api", blogRoutes);
 app.use("/item", lostandFoundRoutes);
 app.use("/notif", notificationsRoutes);
 
-// Serve static files
-app.use(express.static(path.join(__dirname, "client", "dist")));
+// Serve static files from the correct path
+app.use(express.static(path.join(__dirname, "../client/dist")));
 
-// Catch-all route to serve the index.html. This must come after the API routes and static files
+// Catch-all route to serve the index.html from the correct path
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
+  res.sendFile(path.join(__dirname, "../client/dist/index.html"));
 });
 
 // Database connection and server start-up
