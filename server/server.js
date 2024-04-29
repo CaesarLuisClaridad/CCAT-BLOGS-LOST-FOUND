@@ -1,49 +1,52 @@
 require("dotenv").config();
+console.log(process.env.MONGO_URI);
+console.log("Server listening on port:", process.env.PORT);
 const express = require("express");
-const path = require("path");
-const cors = require("cors");
-const mongoose = require("mongoose");
-
 const blogRoutes = require("./routes/blogs");
 const userRoutes = require("./routes/user");
 const lostandFoundRoutes = require("./routes/lostandfound");
 const notificationsRoutes = require("./routes/notification");
+const path = require("path");
+const mongoose = require("mongoose");
+const cors = require("cors");
 
 const app = express();
 
-app.use(cors({ origin: 'https://ccat-blogs-lost-found-frontend.onrender.com' }));
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
+app.use(cors({ origin:'https://ccat-blogs-lost-found-frontend.onrender.com'}));
 
-// Logging middleware for debugging
+// Middleware
+app.use(express.json());
+
+// Logging middleware
 app.use((req, res, next) => {
   console.log(req.path, req.method);
   next();
 });
 
-// API routes
+// API Routes
 app.use("/api/user", userRoutes);
 app.use("/api", blogRoutes);
 app.use("/item", lostandFoundRoutes);
 app.use("/notif", notificationsRoutes);
 
-// Serve static files from the correct path
+// Serve static files from the React app
 app.use(express.static(path.join(__dirname, "../client/dist")));
 
-// Catch-all route to serve the index.html from the correct path
+// All other GET requests not handled before will return our React app
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../client/dist/index.html"));
+  res.sendFile(path.join(__dirname, "../client/dist", "index.html"));
 });
 
-// Database connection and server start-up
+// Connect to database
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
-    console.log("Connected to the database successfully");
-    const PORT = process.env.PORT || 5000;
-    app.listen(PORT, () => {
-      console.log(`Server is running on port ${PORT}`);
+    // Listen for requests
+    app.listen(process.env.PORT, () => {
+      console.log("Connected to db & listening on Port:", process.env.PORT);
     });
   })
   .catch((error) => {
-    console.error("Database connection failed:", error);
+    console.log(error);
   });
