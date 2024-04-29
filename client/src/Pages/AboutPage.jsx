@@ -217,7 +217,7 @@ const AboutPage = () => {
                 </Accordion.Body>
               </Accordion.Item>
 
-              <Accordion.Item eventKey="2">
+              <Accordion.Item eventKey="3">
                 <Accordion.Header>
                   <span className="fs-6 p-2">Use Lost and Found Wisely</span>
                 </Accordion.Header>
@@ -245,7 +245,7 @@ const AboutPage = () => {
                 </Accordion.Body>
               </Accordion.Item>
 
-              <Accordion.Item eventKey="3">
+              <Accordion.Item eventKey="5">
                 <Accordion.Header>
                   <span className="fs-6 p-2">
                     Creating a Friendly Community
