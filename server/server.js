@@ -31,13 +31,15 @@ app.use("/api", blogRoutes);
 app.use("/item", lostandFoundRoutes);
 app.use("/notif", notificationsRoutes);
 
-
 // Serve static files from the client/dist directory
 app.use(express.static(path.join(__dirname, "/client/dist")));
 
+console.log("hello")
+
 // Serve the index.html file for all routes
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "/client/dist", "index.html"));
+  console.log("Serving index.html for path:", req.path);
+  res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
 });
 
 // app.get("*", (req, res) => {
