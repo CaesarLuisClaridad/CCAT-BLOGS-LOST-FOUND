@@ -176,7 +176,7 @@ const AboutPage = () => {
             data-aos="zoom-in-up"
             data-aos-duration="900"
           >
-            <Accordion defaultActiveKey="0" alwaysOpen>
+            <Accordion defaultActiveKey="0">
               <Accordion.Item eventKey="0">
                 <Accordion.Header>
                   <span className="fs-6 p-2">Share Your Stories Kindly</span>
