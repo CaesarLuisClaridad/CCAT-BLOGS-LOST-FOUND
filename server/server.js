@@ -31,13 +31,13 @@ app.use("/api", blogRoutes);
 app.use("/item", lostandFoundRoutes);
 app.use("/notif", notificationsRoutes);
 
-// Serve static files from the React app
-app.use(express.static(path.join(__dirname, "/client/dist")));
+// // Serve static files from the React app
+// app.use(express.static(path.join(__dirname, "../client/dist")));
 
-// All other GET requests not handled before will return our React app
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "/client/dist", "index.html"));
-});
+// // All other GET requests not handled before will return our React app
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "../client/dist", "index.html"));
+// });
 
 // Connect to database
 mongoose.connect(process.env.MONGO_URI)
