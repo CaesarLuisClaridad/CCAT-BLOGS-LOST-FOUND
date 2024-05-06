@@ -71,7 +71,7 @@ const BlogDetails = ({ blog }) => {
   const handleLike = async () => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/like/` + blog._id,
+        `https://ccat-blogs-lost-found-backend.onrender.com/api/like/` + blog._id,
         {
           method: "POST",
           headers: {
