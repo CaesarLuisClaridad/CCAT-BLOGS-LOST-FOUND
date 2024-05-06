@@ -18,10 +18,10 @@ const SignupPage = () => {
     e.preventDefault();
     await signup(username, email, password, confirmPassword, gender);
     console.log(username, email, password, confirmPassword, gender);
-    setUsername("");
-    setEmail("");
-    setPassword("");
-    setConfirmPassword("");
+    // setUsername("");
+    // setEmail("");
+    // setPassword("");
+    // setConfirmPassword("");
   };
 
   //handle genfer
